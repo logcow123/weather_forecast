@@ -27,7 +27,7 @@ The expected minimum amount of time each Sprint for each category is as follows:
 |Date      |Start Time|Category|Description                                 |Total Minutes|
 |----------|----------|:------:|--------------------------------------------|:-----------:|
 |May 13    |2:30      |IM      |Set Up the enviroment to work with Java     |   1 Hour    |
-|          |          |        |                                            |             |
+|May 15    |3:15      |IM      |Did some Practice with the weather API      |   1 Hour    |
 |          |          |        |                                            |             |
 |          |          |        |                                            |             |
 |          |          |        |                                            |             |
