@@ -1,0 +1,8 @@
+{
+    "java.project.sourcePaths": ["src"],
+    "java.project.outputPath": "bin",
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "/Users/logancowley/Documents/cse310/sprint_projects/weather_forecast/json-20250517-javadoc.jar"
+    ]
+}
