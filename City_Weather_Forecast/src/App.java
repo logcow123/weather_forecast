@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import org.json.JSONObject;
 
-// import org.json.JSONObject;
 
 public class App {
     public static void main(String[] args)
@@ -25,12 +24,19 @@ public class App {
             }else
             {
                 ArrayList<BigDecimal> longNlat = City_Locator.getLongAndLat(city);
-                JSONObject data = WeatherForcast.getWeatherData(longNlat);
+                if(longNlat.size() == 0)
+                {
+                    System.out.println("Invalid City: " + city);
+                    System.out.println("");
+                }else
+                {
+                    JSONObject data = WeatherForcast.getWeatherData(longNlat);
 
-                System.out.println("=========================================");
+                    System.out.println("=========================================");
 
-                WeatherForcast.DisplayCurrentData(data);
-                System.out.println("");
+                    WeatherForcast.DisplayCurrentData(data);
+                    System.out.println("");
+                }
             } 
         }
         scanner.close();

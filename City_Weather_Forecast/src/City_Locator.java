@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Set;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -21,10 +22,18 @@ public class City_Locator {
     public static ArrayList<BigDecimal> getLongAndLat(String city)
     {
         JSONObject cityData = getApiCityData(city);
-        ArrayList<BigDecimal> longAndLat = new ArrayList<BigDecimal>();
-        longAndLat.add(cityData.getBigDecimal("latitude"));
-        longAndLat.add(cityData.getBigDecimal("longitude"));
+        Set<String> keys = cityData.keySet();
 
+        ArrayList<BigDecimal> longAndLat = new ArrayList<BigDecimal>();
+        if(keys.size() == 0)
+        {
+            return longAndLat;
+        }else
+        {
+            longAndLat.add(cityData.getBigDecimal("latitude"));
+            longAndLat.add(cityData.getBigDecimal("longitude"));
+        }
+        
         return longAndLat;
     }
 
@@ -42,7 +51,7 @@ public class City_Locator {
 
             // prints out 200 if the call was successful
             int responseCode = conn.getResponseCode();
-            System.out.println("Response Code: " + responseCode);
+            System.out.println("Response Code Geolocate: " + responseCode);
 
             // Buffered Reader reads chunks of text at one time
             BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
@@ -56,10 +65,17 @@ public class City_Locator {
             in.close();
 
             JSONObject data = new JSONObject(response.toString());
-            JSONArray cities = data.getJSONArray("results");
-            JSONObject cityData = cities.getJSONObject(0);
-            return cityData;
 
+            Set<String> keys = data.keySet();
+            if(keys.size() == 1)
+            {
+                return new JSONObject();
+            }else
+            {
+                JSONArray cities = data.getJSONArray("results");
+                JSONObject cityData = cities.getJSONObject(0);
+                return cityData;
+            }
         }catch (Exception e)
         {
             System.out.println("Error: " + e);

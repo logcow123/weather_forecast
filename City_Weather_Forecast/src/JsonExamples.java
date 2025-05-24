@@ -185,8 +185,7 @@ public class JsonExamples {
         
         // Exception handling for malformed JSON
         try {
-            String badJson = "{invalid json}";
-            JSONObject badObj = new JSONObject(badJson);
+            System.out.println("Hello");
         } catch (JSONException e) {
             System.out.println("JSON parsing error: " + e.getMessage());
         }
