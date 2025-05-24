@@ -10,13 +10,13 @@
 
 Steps to build and/or run the software:
 
-1. First step here
-2.
+1. Install Java on your computer
+2. Install org.Json
 3.
 
 Instructions for using the software:
 
-1. First step here
+1. Run app.java
 2.
 3.
 
@@ -24,7 +24,7 @@ Instructions for using the software:
 
 To recreate the development environment, you need the following software and/or libraries with the specified versions:
 
-* First thing here
+* org.JSON 20240303
 *
 *
 
@@ -40,6 +40,6 @@ I found these websites useful in developing this software:
 
 The following items I plan to fix, improve, and/or add to this project in the future:
 
-* [ ] First thing here
-* [ ]
+* [ ] Show more Weather Data
+* [ ] Fix a case where no data is returned from the city name
 * [ ]

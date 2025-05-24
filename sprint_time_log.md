@@ -32,10 +32,12 @@ The expected minimum amount of time each Sprint for each category is as follows:
 |May 15    |3:15      |IM      |Did some Practice with the weather API      |   1 Hour    |
 |May 16    |2:00      |MTG     |Stand up Meeting                            |   1 Hour    |
 |May 19    |2:00      |TP      |Created a Flask Demo                        |   1 Hour    |
-|May 20    |12:30     |TP      |Combined html and flask demo                |   30 Min    |
+|May 20    |12:30     |TP      |Combined html and flask demo                |   1 Hour    |
 |May 21    |2:00      |MTG     |Stand up Meeting                            |   1 Hour    |
 |May 22    |12:30     |IM      |Created A way to read JSON data             |   2 Hours   |
 |May 23    |9:00      |IM      |Added a geolocater API                      |   1 Hour    |
+|May 23    |2:00      |MTG     |Individual presentation meeting             |   1 Hour    |
+|May 23    |5:00      |IM      |Created a loop that can locate weather data |   2 Hours   |
 
 
 _Note: Add more rows as needed._

@@ -5,34 +5,17 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 
-public class City_Locator {
+public class WeatherForcast {
     public static void main(String[] args) {
-        System.out.println("Hello World!");
         
-
-        JSONObject data = getApiCityData("Tokyo");
-        App.ListKeysAndValues(data);
-
-
     }
-    public static ArrayList<BigDecimal> getLongAndLat(String city)
+    public static JSONObject getWeatherData(ArrayList<BigDecimal> longAndLat)
     {
-        JSONObject cityData = getApiCityData(city);
-        ArrayList<BigDecimal> longAndLat = new ArrayList<BigDecimal>();
-        longAndLat.add(cityData.getBigDecimal("latitude"));
-        longAndLat.add(cityData.getBigDecimal("longitude"));
+        String apiUrl = "https://api.open-meteo.com/v1/forecast?latitude=" + longAndLat.get(0) + "&longitude=" + longAndLat.get(1) + "&current=temperature_2m,relative_humidity_2m,is_day,wind_speed_10m";
 
-        return longAndLat;
-    }
-
-    public static JSONObject getApiCityData(String city)
-    {
-        String apiUrl = "https://geocoding-api.open-meteo.com/v1/search?name=" + city + "&count=1&language=en&format=json";
-        try
-        {
+        try{
             // create a new URL object that can be used with HttpURLConnection
             URL url = new URL(apiUrl);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -56,14 +39,30 @@ public class City_Locator {
             in.close();
 
             JSONObject data = new JSONObject(response.toString());
-            JSONArray cities = data.getJSONArray("results");
-            JSONObject cityData = cities.getJSONObject(0);
-            return cityData;
+            return data;
 
-        }catch (Exception e)
+        }catch(Exception e)
         {
             System.out.println("Error: " + e);
         }
         return new JSONObject();
+        
     }
+
+    public static void DisplayCurrentData(JSONObject data)
+    {
+        JSONObject current = data.getJSONObject("current");
+        JSONObject current_units = data.getJSONObject("current_units");
+
+        String currentTemp = current.getBigDecimal("temperature_2m") + " " + current_units.getString("temperature_2m");
+        String currentWind = current.getBigDecimal("wind_speed_10m") + " " + current_units.getString("wind_speed_10m");
+        String currentHumidity = current.getBigDecimal("relative_humidity_2m") + "%";
+
+        System.out.println("Current Conditions:");
+        System.out.println("");
+        System.out.println("Tempurature: " + currentTemp);
+        System.out.println("Wind Speed: " + currentWind);
+        System.out.println("Humidity: " + currentHumidity);
+    }
+    
 }
